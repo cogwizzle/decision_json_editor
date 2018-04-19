@@ -12,7 +12,7 @@ const validateAndSave = (value, callback) => {
 
 export default props => (
   <div className='viewer'>
-    <ReactAce
+  <ReactAce
       mode="json"
       onChange={value => validateAndSave(value, props.save)}
       value={props.value}
