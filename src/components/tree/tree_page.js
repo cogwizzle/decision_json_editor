@@ -1,12 +1,15 @@
 import React from 'react';
 import Editor from './editor';
 import Viewer from './viewer';
-import { update } from '../creators/output';
+import { update } from '../../creators/output';
 import { connect } from 'react-redux';
+import Page from '../page';
 
 const styles = {
   wrapper: {
     width: '100%',
+    margin: '0px',
+    padding: '0px',
     display: 'flex',
     justifyContent: 'center'
   },
@@ -19,13 +22,13 @@ const styles = {
 };
 
 const BaseComponent = props => (
-  <div className='wrapper' style={styles.wrapper}>
-    <div className='editor_page' style={styles.editorPage}>
-      <Viewer value={JSON.stringify(props.value, undefined, 2)} onChange={props.save} />
-      <hr />
-      <Editor value={props.value} onSave={props.save} />
+  <Page>
+    <div className='wrapper' style={styles.wrapper}>
+      <div className='editor_page' style={styles.editorPage}>
+        <Viewer value={props.value} onChange={props.save} />
+      </div>
     </div>
-  </div>
+  </Page>
 );
 
 const mapStateToProps = state => ({

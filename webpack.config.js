@@ -22,6 +22,10 @@ var config = {
             presets: ['env', 'react','stage-2']
           }
         }
+      },
+      {
+        test: /\.css$/,
+        loader: ['style-loader', 'css-loader']
       }
     ]
   }

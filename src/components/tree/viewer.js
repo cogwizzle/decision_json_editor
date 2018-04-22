@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactAce from 'react-ace';
+import Tree from './tree';
 
 const validateAndSave = (value, callback) => {
   try{
@@ -12,12 +13,9 @@ const validateAndSave = (value, callback) => {
 
 export default props => (
   <div className='viewer'>
-  <ReactAce
-      mode="json"
-      onChange={value => validateAndSave(value, props.save)}
+    <Tree
       value={props.value}
-      fontSize={14}
-      width='100%'
+      onChange={data => validateAndSave(data)}
     />
   </div>
 );
