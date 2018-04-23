@@ -2,20 +2,16 @@ import React from 'react';
 import ReactAce from 'react-ace';
 import Tree from './tree';
 
-const validateAndSave = (value, callback) => {
-  try{
-
-    callback(JSON.parse(value));
-  } catch (e) {
-
-  }
-}
-
 export default props => (
   <div className='viewer'>
+    <input type='text' id='name' defaultValue={props.value.name} onBlur={event => {
+      const nextValue = {...props.value};
+      nextValue.name = event.target.value;
+      props.onChange(nextValue);
+    }}/>
     <Tree
       value={props.value}
-      onChange={data => validateAndSave(data)}
+      onChange={data => props.onChange(data)}
     />
   </div>
 );
