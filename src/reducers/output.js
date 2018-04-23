@@ -1,7 +1,16 @@
+import v4 from 'uuid/v4';
+
 export default (state = {
   value: {
     name: 'undefined',
-    state: []
+    state: [
+      {
+        id: v4(),
+        parent: null,
+        slide: '#Initial Slide',
+        link: null
+      }
+    ]
   }
 }, action) => {
   switch(action.type) {
