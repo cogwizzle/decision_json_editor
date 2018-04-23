@@ -1,5 +1,5 @@
 import React from 'react';
-import TitleBar from './title_bar';
+import Menu from './menu';
 
 const styles = {
   page: {
@@ -10,7 +10,7 @@ const styles = {
 
 export default props => (
   <div className='page' style={styles.page}>
-    <TitleBar>Decision JSON Editor</TitleBar>
+    <Menu />
     {props.children}
   </div>
 );
