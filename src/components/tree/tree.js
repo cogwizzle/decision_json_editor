@@ -1,6 +1,7 @@
 import React from 'react';
 import Controls from './node_controls';
 import v4 from 'uuid/v4';
+import Card from './tree_card';
 
 export default props => {
   
@@ -20,16 +21,21 @@ const styles = {
 const createTreeNodes = (node, states) => {
 
   const children = states.filter(state => state.parent === node.id);
-  const display = `${node.id} ${(node.slide.indexOf('\n') > -1) ? shorten(node.slide.split('\n')[0], 30) : shorten(node.slide, 30)}`;
 
   return (
     <div className={node}>
-      {display}
-      <Controls
-        addLink={`./new/${node.id}`}
-        editLink={`./edit/${node.id}`}
-        removeLink={`./remove/${node.id}`}
-      />
+      <Card 
+        header={node.id} 
+        controls={
+          <Controls
+            addLink={`./new/${node.id}`}
+            editLink={`./edit/${node.id}`}
+            removeLink={`./remove/${node.id}`}
+            parent={node.parent}
+          />
+        }>
+        {node.slide}
+      </Card>
       <div style={styles.indent}>
         {children.map(child => createTreeNodes(child, states))}
       </div>
