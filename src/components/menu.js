@@ -41,7 +41,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => ({
   },
   load: () => {
     dispatchProps.update(prompt('Please paste your json file contents:'));
-    //window.location.reload();
+    window.location.reload();
   },
   save: () => swal(JSON.stringify(stateProps.fullValue, undefined, 2))
 });
