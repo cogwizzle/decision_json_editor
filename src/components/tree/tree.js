@@ -25,7 +25,7 @@ const createTreeNodes = (node, states) => {
   return (
     <div className={node}>
       <Card 
-        header={node.id} 
+        header={node.id}
         controls={
           <Controls
             addLink={`./new/${node.id}`}
