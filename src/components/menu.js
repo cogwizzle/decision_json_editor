@@ -10,7 +10,9 @@ const styles = {
     backgroundColor: 'transparent',
     border: 'none',
     color: '#FEFEFE',
-    padding: '10px'
+    padding: '10px',
+    textDecoration: 'none',
+    fontSize: '16px',
   },
   submenu: {
     backgroundColor: '#3D3D3D'
@@ -23,7 +25,7 @@ const BaseComponent = props => (
     <div className='navs' style={styles.submenu}>
       <input type='button' onClick={props.reset} value='New' style={styles.navLinks} />
       <input type='button' onClick={props.load} value='Load' style={styles.navLinks} />
-      <input type='button' onClick={props.save} value='Save' style={styles.navLinks} />
+      <a href={props.save} style={styles.navLinks} download={`${props.name}.json`} target='_blank'>Save</a>
     </div>
 </div>
 );
@@ -55,7 +57,8 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => ({
     dispatchProps.update(prompt('Please paste your json file contents:'));
     window.location.reload();
   },
-  save: () => swal(JSON.stringify(stateProps.fullValue, undefined, 2))
+  save: `data:text/plain,${encodeURI(JSON.stringify(stateProps))}`,
+  name: stateProps.fullValue.name
 });
 
 export default connect(mapStateToProps, mapDispatchToProps, mergeProps)(BaseComponent);
