@@ -4,6 +4,7 @@ import { update } from '../creators/output';
 import { connect } from 'react-redux';
 import v4 from 'uuid/v4';
 import swal from 'sweetalert';
+import BetterFile from './better_file';
 
 const styles = {
   navLinks: {
@@ -24,7 +25,7 @@ const BaseComponent = props => (
     <TitleBar>Decision JSON Editor</TitleBar>
     <div className='navs' style={styles.submenu}>
       <input type='button' onClick={props.reset} value='New' style={styles.navLinks} />
-      <input type='button' onClick={props.load} value='Load' style={styles.navLinks} />
+      <BetterFile onChange={props.load} style={styles.navLinks}>Load</BetterFile>
       <a href={props.save} style={styles.navLinks} download={`${props.name}.json`} target='_blank'>Save</a>
     </div>
 </div>
@@ -53,9 +54,19 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => ({
     });
     window.location.reload();
   },
-  load: () => {
-    dispatchProps.update(prompt('Please paste your json file contents:'));
-    window.location.reload();
+  load: event => {
+    if (window.FileReader) {
+
+      const reader = new FileReader();
+      console.log('reader: ', reader);
+
+      reader.onload = () => {
+
+        dispatchProps.update(reader.result);
+        window.location.reload();
+      };
+      reader.readAsText(event.target.files[0]);
+    }
   },
   save: `data:text/plain,${encodeURI(JSON.stringify(stateProps.fullValue))}`,
   name: stateProps.fullValue.name
