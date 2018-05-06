@@ -14,7 +14,8 @@ const styles = {
     padding: '10px',
     textDecoration: 'none',
     fontSize: '16px',
-    cursor: 'pointer'
+    cursor: 'pointer',
+    font: 'inherit'
   },
   submenu: {
     backgroundColor: '#3D3D3D'
