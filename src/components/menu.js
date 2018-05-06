@@ -57,7 +57,7 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => ({
     dispatchProps.update(prompt('Please paste your json file contents:'));
     window.location.reload();
   },
-  save: `data:text/plain,${encodeURI(JSON.stringify(stateProps))}`,
+  save: `data:text/plain,${encodeURI(JSON.stringify(stateProps.fullValue))}`,
   name: stateProps.fullValue.name
 });
 

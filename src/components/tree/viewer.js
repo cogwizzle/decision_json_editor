@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactAce from 'react-ace';
 import Tree from './tree';
 
 export default props => (
