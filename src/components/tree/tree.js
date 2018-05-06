@@ -23,7 +23,7 @@ const createTreeNodes = (node, states) => {
   const children = states.filter(state => state.parent === node.id);
 
   return (
-    <div className={node}>
+    <div className={node} key={node.id}>
       <Card 
         header={node.id}
         controls={
