@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Page from '../page';
 import Controls from './edit_controls';
 import { Redirect } from 'react-router';
+import Help from 'react-icons/lib/fa/question-circle';
 
 class EditorPage extends React.Component {
   
@@ -66,6 +67,9 @@ class EditorPage extends React.Component {
       input: {
         flex: 3,
         width: '100%',
+      },
+      icon: {
+        fontSize: '16px'
       }
     };
 
@@ -80,10 +84,14 @@ class EditorPage extends React.Component {
             <div className='editor_page' style={styles.editorPage}>
               <div style={styles.branch}>
                 <div>
-                  <label style={styles.label} htmlFor='link'>Link:</label><input id='link' ref='link' type='text' style={styles.input} defaultValue={this.state.link} />
+                  <label style={styles.label} htmlFor='link'>Link:</label><input data-tip='help' id='link' ref='link' type='text' style={styles.input} defaultValue={this.state.link} />
                 </div>
                 <div>
-                  <label style={styles.label} htmlFor='slide'>Slide Markdown:</label><textarea id='slide' ref='slide' type='text' rows={15} style={styles.input} defaultValue={this.state.slide} />
+                  <div>
+                    <label style={styles.label} htmlFor='slide'>Slide Markdown 
+                    <a style={styles.icon} target='_tab' href='https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet'><span title='Help'><Help /></span></a>:</label>
+                  </div>
+                  <textarea id='slide' ref='slide' type='text' rows={15} style={styles.input} defaultValue={this.state.slide} />
                 </div>
               </div>
               <Controls onSave={this.save.bind(this)}/>
