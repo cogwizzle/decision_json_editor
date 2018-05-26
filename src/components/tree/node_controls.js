@@ -14,6 +14,6 @@ export default props => (
   <span className='node_controls' style={styles.iconSize}>
     <NavLink to={props.addLink}><span title='Add State'><Add /></span></NavLink>
     <NavLink to={props.editLink}><span title='Edit State'><Edit /></span></NavLink>
-    {(props.parent !== null) ? <NavLink to={props.removeLink}><Remove /></NavLink> : []}
+    {(props.parent !== null) ? <NavLink to={props.removeLink}><span title='Remove State'><Remove /></span></NavLink> : []}
   </span>
 );
