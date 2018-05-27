@@ -1,7 +1,11 @@
 // @flow
 import React from 'react';
 
-const styles: Object = {
+type Props = {
+  onSave?: Function
+};
+
+const styles = {
   controls: {
     display: 'flex',
     justifyContent: 'flex-end'
@@ -15,11 +19,9 @@ const styles: Object = {
   }
 };
 
-export default (props: ?Object) => {
-
-  const onSave: function = (props && props.onSave) ? props.onSave : () => {};
+export default (props: Props) => {
 
   return (<div className='controls' style={styles.controls}>
-    <input type='button' className='save' style={styles.save} value='Save' onClick={onSave} />
+    <input type='button' className='save' style={styles.save} value='Save' onClick={props.onSave} />
   </div>);
 };
