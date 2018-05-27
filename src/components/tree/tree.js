@@ -1,14 +1,20 @@
+// @flow
 import React from 'react';
 import Controls from './node_controls';
 import v4 from 'uuid/v4';
 import Card from './tree_card';
+import type { Base, Slide } from '../../models/redux_state';
 
-export default props => {
+type Props = {
+  value: Base
+};
+
+export default (props: Props) => {
   
   const root = props.value.state.find(state => null === state.parent);
   
   return (<div className='tree'>
-    {createTreeNodes(root, props.value.state)}
+    {(root) ? createTreeNodes(root, props.value.state) : []}
   </div>);
 };
 
@@ -18,7 +24,7 @@ const styles = {
   }
 }
 
-const createTreeNodes = (node, states) => {
+const createTreeNodes = (node: Slide, states: Slide[]) => {
 
   const children = states.filter(state => state.parent === node.id);
 
@@ -34,7 +40,7 @@ const createTreeNodes = (node, states) => {
             parent={node.parent}
           />
         }>
-        {node.slide}
+        {(node.slide) ?  node.slide : []}
       </Card>
       <div style={styles.indent}>
         {children.map(child => createTreeNodes(child, states))}

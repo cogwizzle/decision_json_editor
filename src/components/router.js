@@ -1,10 +1,11 @@
+// @flow
 import React from 'react';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import TreePage from './tree/tree_page';
 import EditPage from './editor/editor_page';
 import Remove from './remove';
 
-export default props => (
+export default () => (
     <Router>
       <Switch>
         <Route exact path='/' component={TreePage} />

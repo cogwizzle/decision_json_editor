@@ -1,17 +1,19 @@
+// @flow
 import React from 'react';
 import { update } from '../creators/output';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router';
+import type { ReduxState } from '../models/redux_state';
 
-const BaseComponent = props => {
+const BaseComponent = () => {
   return (<Redirect to='/'/>);
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state: ReduxState) => ({
   fullValue: state.value
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch: Function) => ({
   update: value => dispatch(update(value))
 });
 

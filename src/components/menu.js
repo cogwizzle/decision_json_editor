@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import TitleBar from './title_bar';
 import { update } from '../creators/output';
@@ -5,6 +6,7 @@ import { connect } from 'react-redux';
 import v4 from 'uuid/v4';
 import swal from 'sweetalert';
 import BetterFile from './better_file';
+import type { ReduxState } from '../models/redux_state';
 
 const styles = {
   navLinks: {
@@ -22,7 +24,14 @@ const styles = {
   }
 };
 
-const BaseComponent = props => (
+type Props = {
+  reset: Function,
+  load: Function,
+  save: string,
+  name: string
+};
+
+const BaseComponent = (props: Props) => (
   <div>
     <TitleBar>Decision JSON Editor</TitleBar>
     <div className='navs' style={styles.submenu}>
@@ -33,15 +42,15 @@ const BaseComponent = props => (
 </div>
 );
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state: ReduxState): Object => ({
   fullValue: state.value
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch: Function): Object => ({
   update: value => dispatch(update(value))
 });
 
-const mergeProps = (stateProps, dispatchProps, ownProps) => ({
+const mergeProps = (stateProps: Object, dispatchProps: Object, ownProps): Object => ({
   reset: () => {
     dispatchProps.update({
       name: 'undefined',
@@ -60,7 +69,6 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => ({
     if (window.FileReader) {
 
       const reader = new FileReader();
-      console.log('reader: ', reader);
 
       reader.onload = () => {
 

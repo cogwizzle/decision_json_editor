@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import Menu from './menu';
 
@@ -8,7 +9,11 @@ const styles = {
   }
 };
 
-export default props => (
+type Props = {
+  children?: Object[] | Object | string
+};
+
+export default (props: Props) => (
   <div className='page' style={styles.page}>
     <Menu />
     {props.children}

@@ -1,5 +1,7 @@
+// @flow
 import React from 'react';
 import v4 from 'uuid/v4';
+import type { Base } from '../../models/redux_state';
 
 const styles = {
   editor: {
@@ -28,14 +30,18 @@ const styles = {
   }
 };
 
-export default class Editor extends React.Component {
+type Props = {
+  onSave: Function,
+  value: Base
+};
+export default class Editor extends React.Component<Props> {
   
   /**
    * Default constructor.
    *
    * @param {Object[]} props Tag properties.
    */
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
   }
 
