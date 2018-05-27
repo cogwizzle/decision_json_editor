@@ -9,7 +9,7 @@ export type ReduxState = {
 /**
  * Base level of Redux State.
  */
-type Base = {
+export type Base = {
   name: string,
   state: Slide[]
 }

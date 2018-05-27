@@ -1578,7 +1578,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nmodule.exports.update = function (newValue) {\n  return {\n    type: 'UPDATE_OUTPUT',\n    value: newValue\n  };\n};\n\n//# sourceURL=webpack:///./src/creators/output.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nvar update = function update(newValue) {\n  return {\n    type: 'UPDATE_OUTPUT',\n    value: newValue\n  };\n};\n\nexports.default = { update: update };\n\n//# sourceURL=webpack:///./src/creators/output.js?");
 
 /***/ }),
 

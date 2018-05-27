@@ -1,5 +1,4 @@
 // @flow
-
 import React from 'react';
 import v4 from 'uuid/v4';
 import outputCreators from '../../creators/output';
@@ -8,7 +7,7 @@ import Page from '../page';
 import Controls from './edit_controls';
 import { Redirect } from 'react-router';
 import Help from 'react-icons/lib/fa/question-circle';
-import type { ReduxState, Slide } from '../../models/redux_state';
+import type { ReduxState, Base, Slide } from '../../models/redux_state';
 
 type Props = {
   fullValue: ReduxState,
@@ -130,7 +129,7 @@ const mapStateToProps = (state: Object) => ({
 });
 
 const mapDispatchToProps = (dispatch: Function) => ({
-  update: (value: string) => dispatch(outputCreators.update(value))
+  update: (value: Base) => dispatch(outputCreators.update(value))
 });
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => {
