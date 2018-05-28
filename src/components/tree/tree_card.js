@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 
 const styles = {
@@ -34,7 +35,13 @@ const styles = {
   }
 }
 
-export default props => (
+type Props = {
+  header: string,
+  children: Object[] | Object | string,
+  controls: Object[] | Object | string
+};
+
+export default (props: Props) => (
   <div className='tree_card' style={styles.treeCard}>
     <div className='content' style={styles.content}>
       <div style={styles.idAnchor}>

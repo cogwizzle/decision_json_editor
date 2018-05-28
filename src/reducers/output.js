@@ -1,18 +1,23 @@
+// @flow
 import v4 from 'uuid/v4';
+import type { ReduxState } from '../models/redux_state';
+import type { Action } from '../models/redux_action';
 
-export default (state = {
+const defaultState: ReduxState = {
   value: {
     name: 'undefined',
     state: [
       {
         id: v4(),
-        parent: null,
+        parent: undefined,
         slide: '#Initial Slide',
-        link: null
+        link: undefined
       }
     ]
   }
-}, action) => {
+};
+
+export default (state: ReduxState = defaultState, action: Action): ReduxState => {
   switch(action.type) {
     case 'UPDATE_OUTPUT':
 
@@ -30,3 +35,5 @@ export default (state = {
       return state;
   }
 };
+
+export { defaultState };

@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import Add from 'react-icons/lib/md/add-circle';
 import Remove from 'react-icons/lib/md/remove-circle';
@@ -10,7 +11,14 @@ const styles = {
   }
 };
 
-export default props => (
+type Props = {
+  addLink: string,
+  editLink: string,
+  removeLink: string,
+  parent?: string
+};
+
+export default (props: Props) => (
   <span className='node_controls' style={styles.iconSize}>
     <NavLink to={props.addLink}><span title='Add State'><Add /></span></NavLink>
     <NavLink to={props.editLink}><span title='Edit State'><Edit /></span></NavLink>

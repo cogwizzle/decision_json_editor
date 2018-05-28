@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import v4 from 'uuid/v4';
 
@@ -10,7 +11,13 @@ const styles = {
   }
 };
 
-export default props => {
+type Props = {
+  style: Object,
+  children: Object[] | Object | string,
+  onChange: Function
+};
+
+export default (props: Props) => {
   const id = v4();
 
   return (

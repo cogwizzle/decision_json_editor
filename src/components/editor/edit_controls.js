@@ -1,4 +1,9 @@
+// @flow
 import React from 'react';
+
+type Props = {
+  onSave?: Function
+};
 
 const styles = {
   controls: {
@@ -14,8 +19,9 @@ const styles = {
   }
 };
 
-export default props => (
-  <div className='controls' style={styles.controls}>
+export default (props: Props) => {
+
+  return (<div className='controls' style={styles.controls}>
     <input type='button' className='save' style={styles.save} value='Save' onClick={props.onSave} />
-  </div>
-)
+  </div>);
+};

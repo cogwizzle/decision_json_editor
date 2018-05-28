@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 
 const styles = {
@@ -17,7 +18,11 @@ const styles = {
   }
 };
 
-export default props => (
+type Props = {
+  children?: Object[] | Object | string
+};
+
+export default (props: Props) => (
   <div className='titlebar' style={styles.titlebar}>
     <span className='header_text' style={styles.header}>
       {props.children}

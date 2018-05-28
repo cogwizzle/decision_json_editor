@@ -1,3 +1,4 @@
+// @flow
 import React from 'react';
 import v4 from 'uuid/v4';
 import outputCreators from '../../creators/output';
@@ -6,9 +7,29 @@ import Page from '../page';
 import Controls from './edit_controls';
 import { Redirect } from 'react-router';
 import Help from 'react-icons/lib/fa/question-circle';
+import type { ReduxState, Base, Slide } from '../../models/redux_state';
 
-class EditorPage extends React.Component {
-  
+type Props = {
+  fullValue: ReduxState,
+  id: string,
+  parent: string,
+  slide: string,
+  link: string,
+  update: Function
+};
+
+type State = {
+  id: string,
+  parent: string,
+  slide: string,
+  link: string,
+  toHome: boolean
+}
+
+class EditorPage extends React.Component<Props, State> {
+  slide: ?HTMLTextAreaElement
+  link: ?HTMLInputElement
+
   /**
    * Default constructor.
    *
@@ -27,11 +48,11 @@ class EditorPage extends React.Component {
 
   save() {
     const value = {...this.props.fullValue.value};
-    const newState = value.state.find(state => this.state.id === state.id) ||
+    const newState: Slide = value.state.find(state => this.state.id === state.id) ||
       {id: this.state.id, parent: this.state.parent};
     value.state = value.state.filter(state => state.id !== this.state.id);
-    newState.slide = this.refs.slide.value;
-    newState.link = this.refs.link.value;
+    newState.slide =  this.refs.slide.value || '';
+    newState.link = this.refs.link.value || '';
     value.state = [...value.state, newState];
 
     this.props.update(value);
@@ -48,8 +69,7 @@ class EditorPage extends React.Component {
         display: 'flex',
         justifyContent: 'center',
         width: '100%'
-      },
-      editorPage: {
+      }, editorPage: {
         display: 'flex',
         flexDirection: 'column',
         margin: '10px',
@@ -103,13 +123,13 @@ class EditorPage extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state: ReduxState) => ({
   fullValue: state,
   slides: state.value.state
 });
 
-const mapDispatchToProps = dispatch => ({
-  update: value => dispatch(outputCreators.update(value))
+const mapDispatchToProps = (dispatch: Function) => ({
+  update: (value: Base) => dispatch(outputCreators.update(value))
 });
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => {

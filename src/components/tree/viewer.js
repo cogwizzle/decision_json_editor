@@ -1,7 +1,14 @@
+// @flow
 import React from 'react';
 import Tree from './tree';
+import type { Base } from '../../models/redux_state';
 
-export default props => (
+type Props = {
+  value: Base,
+  onChange: Function
+};
+
+export default (props: Props) => (
   <div className='viewer'>
     <input type='text' id='name' defaultValue={props.value.name} onBlur={event => {
       const nextValue = {...props.value};
