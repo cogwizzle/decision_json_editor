@@ -34,12 +34,13 @@ type Props = {
   onSave: Function,
   value: Base
 };
+
 export default class Editor extends React.Component<Props> {
   
   /**
    * Default constructor.
    *
-   * @param {Object[]} props Tag properties.
+   * @param {Props} props Tag properties.
    */
   constructor(props: Props) {
     super(props);

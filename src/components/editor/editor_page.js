@@ -123,7 +123,7 @@ class EditorPage extends React.Component<Props, State> {
   }
 }
 
-const mapStateToProps = (state: Object) => ({
+const mapStateToProps = (state: ReduxState) => ({
   fullValue: state,
   slides: state.value.state
 });
