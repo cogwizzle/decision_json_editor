@@ -63,7 +63,6 @@ const mergeProps = (stateProps: Object, dispatchProps: Object, ownProps): Object
         }
       ]
     });
-    window.location.reload();
   },
   load: event => {
     if (window.FileReader) {
@@ -73,7 +72,6 @@ const mergeProps = (stateProps: Object, dispatchProps: Object, ownProps): Object
       reader.onload = () => {
 
         dispatchProps.update(reader.result);
-        window.location.reload();
       };
       reader.readAsText(event.target.files[0]);
     }

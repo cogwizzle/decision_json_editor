@@ -8,16 +8,56 @@ type Props = {
   onChange: Function
 };
 
-export default (props: Props) => (
-  <div className='viewer'>
-    <input type='text' id='name' defaultValue={props.value.name} onBlur={event => {
-      const nextValue = {...props.value};
-      nextValue.name = event.target.value;
-      props.onChange(nextValue);
-    }}/>
-    <Tree
-      value={props.value}
-      onChange={data => props.onChange(data)}
-    />
-  </div>
-);
+type ViewerState = {
+  nameValue: ?string
+};
+
+export default class Viewer extends React.Component<Props, ViewerState> {
+  
+  /**
+   * Default constructor.
+   *
+   * @param {Object[]} props Tag properties.
+   */
+  constructor(props: Props) {
+    super(props);
+
+    this.state = {
+      nameValue: props.value.name
+    };
+  }
+
+  handleChange(event: Object) {
+    const val: ?string = event.target.value;
+    this.setState({nameValue: val});
+    const nextValue = { ...this.props.value };
+    nextValue.name = val;
+    this.props.onChange(nextValue);
+  };
+
+  componentWillReceiveProps(props: Props) {
+
+    this.setState({nameValue : props.value.name});
+  }
+
+  /**
+   * JSX based render function.
+   *
+   * @return {string} JSX DOM.
+   */
+  render() {
+    return (
+      <div className='viewer'>
+        <input type='text' ref='name' id='name' value={this.state.nameValue} onBlur={event => {
+          const nextValue = { ...this.props.value };
+          nextValue.name = event.target.value;
+          this.props.onChange(nextValue);
+        }} onChange={this.handleChange.bind(this)}/>
+        <Tree
+          value={this.props.value}
+          onChange={data => this.props.onChange(data)}
+        />
+      </div>
+    );
+  }
+};

@@ -4,9 +4,9 @@ import ReactDom from 'react-dom';
 import Provider from './provider';
 import Router from './components/router';
 
-const mountPoint = document.querySelector('#anchor');
+const mountPoint: ?HTMLElement = document.querySelector('#anchor');
 
-if(mountPoint)
+if (mountPoint)
   ReactDom.render(
     <Provider>
       <Router />

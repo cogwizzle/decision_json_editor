@@ -22,9 +22,11 @@ export default (state: ReduxState = defaultState, action: Action): ReduxState =>
     case 'UPDATE_OUTPUT':
 
     try {
+
+      const val: string | Object = action.value;
       return {
         ...state,
-        value: (typeof action.value === 'string') ? JSON.parse(action.value) : action.value
+        value: (typeof val === 'string') ? JSON.parse(val) : val || defaultState.value
       };
     } catch (e) {
 
