@@ -12,8 +12,8 @@ type ReduxStore = {
 };
 
 const state: ReduxState = loadState();
-console.log('state: ', state);
 const store: ReduxStore = createStore(reducer, state, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+
 store.subscribe(() => saveState(store.getState()));
 
 type Props = {
