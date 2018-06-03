@@ -38,6 +38,7 @@ const BaseComponent = (props: Props) => (
       <input type='button' onClick={props.reset} value='New' style={styles.navLinks} />
       <BetterFile onChange={props.load} style={styles.navLinks}>Load</BetterFile>
       <a href={props.save} style={styles.navLinks} download={`${props.name}.json`} target='_blank'>Save</a>
+      <a href='https://github.com/jfehrman/decision_json_editor/blob/master/README.md' style={styles.navLinks} target='_help'>Help</a>
     </div>
 </div>
 );
