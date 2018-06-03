@@ -15,7 +15,7 @@ type Props = {
   addLink: string,
   editLink: string,
   removeLink: string,
-  parent?: string
+  parent?: string | null
 };
 
 export default (props: Props) => (
