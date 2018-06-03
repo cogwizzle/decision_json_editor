@@ -4,8 +4,9 @@
   "description": "Editor for decision_json JSON configuration files.",
   "main": "index.html",
   "scripts": {
-    "build": "webpack --watch",
-    "test": "jest"
+    "build": "webpack",
+    "test": "jest",
+    "start": "asdf -p 8080 -d public"
   },
   "repository": {
     "type": "git",
