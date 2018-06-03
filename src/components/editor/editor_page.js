@@ -89,7 +89,8 @@ class EditorPage extends React.Component<Props, State> {
         width: '100%',
       },
       icon: {
-        fontSize: '16px'
+        fontSize: '16px',
+        color: '#0645AD'
       }
     };
 
