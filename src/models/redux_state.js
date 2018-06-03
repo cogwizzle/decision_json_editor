@@ -19,7 +19,7 @@ export type Base = {
  */
 export type Slide = {
   id: string,
-  parent?: string,
-  slide?: string,
-  link?: string
+  parent?: string | null,
+  slide?: string | null,
+  link?: string | null
 };

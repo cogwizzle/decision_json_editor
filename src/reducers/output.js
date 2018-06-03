@@ -9,9 +9,9 @@ const defaultState: ReduxState = {
     state: [
       {
         id: v4(),
-        parent: undefined,
+        parent: null,
         slide: '#Initial Slide',
-        link: undefined
+        link: null 
       }
     ]
   }
