@@ -1,6 +1,7 @@
 // @flow
 import type { ReduxState, Slide } from '../models/redux_state';
 import { defaultState } from '../reducers/output';
+import validateState from '../validation/validate_state';
 
 /**
  * Persiste the application state.
@@ -21,7 +22,9 @@ const loadState = (): ReduxState => {
     // Try and parse the currentState.
     try {
 
-      return JSON.parse(currentState);
+      const state: ReduxState = JSON.parse(currentState);
+      
+      return (validateState(state)) ? state : defaultState;
     
     // If the current state can't be parsed load the default values.
     } catch (e) {

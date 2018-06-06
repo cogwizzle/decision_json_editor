@@ -7,6 +7,8 @@ import v4 from 'uuid/v4';
 import swal from 'sweetalert';
 import BetterFile from './better_file';
 import type { ReduxState } from '../models/redux_state';
+import validateState from '../validation/validate_state';
+import { defaultState } from '../reducers/output';
 
 const styles = {
   navLinks: {
@@ -72,7 +74,15 @@ const mergeProps = (stateProps: Object, dispatchProps: Object, ownProps): Object
 
       reader.onload = () => {
 
-        dispatchProps.update(reader.result);
+        try{
+
+          const result = JSON.parse((typeof reader.result == 'string') ? reader.result : '');
+
+          dispatchProps.update((validateState({value: result})) ? result : defaultState.value);
+        } catch (e) {
+
+          alert('Invalid decision tree.');
+        }
       };
       reader.readAsText(event.target.files[0]);
     }
