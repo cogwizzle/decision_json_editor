@@ -1398,7 +1398,7 @@ eval("module.exports = function(originalModule) {\n\tif (!originalModule.webpack
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactDom = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n\nvar _reactDom2 = _interopRequireDefault(_reactDom);\n\nvar _provider = __webpack_require__(/*! ./provider */ \"./src/provider.js\");\n\nvar _provider2 = _interopRequireDefault(_provider);\n\nvar _router = __webpack_require__(/*! ./components/router */ \"./src/components/router.js\");\n\nvar _router2 = _interopRequireDefault(_router);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar mountPoint = document.querySelector('#anchor');\n\nif (mountPoint) _reactDom2.default.render(_react2.default.createElement(\n  _provider2.default,\n  null,\n  _react2.default.createElement(_router2.default, null)\n), mountPoint);\n\n//# sourceURL=webpack:///./src/app.js?");
+eval("\n\nvar _react = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactDom = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n\nvar _reactDom2 = _interopRequireDefault(_reactDom);\n\nvar _provider = __webpack_require__(/*! ./provider */ \"./src/provider.js\");\n\nvar _provider2 = _interopRequireDefault(_provider);\n\nvar _router = __webpack_require__(/*! ./components/router */ \"./src/components/router.js\");\n\nvar _router2 = _interopRequireDefault(_router);\n\nvar _offline = __webpack_require__(/*! ./service_worker/offline */ \"./src/service_worker/offline.js\");\n\nvar _offline2 = _interopRequireDefault(_offline);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar mountPoint = document.querySelector('#anchor');\n\n\nif (mountPoint) _reactDom2.default.render(_react2.default.createElement(\n  _provider2.default,\n  null,\n  _react2.default.createElement(_router2.default, null)\n), mountPoint);\n\n(0, _offline2.default)();\n\n//# sourceURL=webpack:///./src/app.js?");
 
 /***/ }),
 
@@ -1615,6 +1615,18 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 
 "use strict";
 eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.defaultState = undefined;\n\nvar _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };\n\nvar _v = __webpack_require__(/*! uuid/v4 */ \"./node_modules/uuid/v4.js\");\n\nvar _v2 = _interopRequireDefault(_v);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar defaultState = {\n  value: {\n    name: 'undefined',\n    state: [{\n      id: (0, _v2.default)(),\n      parent: null,\n      slide: '#Initial Slide',\n      link: null\n    }]\n  }\n};\n\nexports.default = function () {\n  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultState;\n  var action = arguments[1];\n\n  switch (action.type) {\n    case 'UPDATE_OUTPUT':\n\n      try {\n\n        var val = action.value;\n        return _extends({}, state, {\n          value: typeof val === 'string' ? JSON.parse(val) : val || defaultState.value\n        });\n      } catch (e) {\n\n        return state;\n      }\n    default:\n\n      return state;\n  }\n};\n\nexports.defaultState = defaultState;\n\n//# sourceURL=webpack:///./src/reducers/output.js?");
+
+/***/ }),
+
+/***/ "./src/service_worker/offline.js":
+/*!***************************************!*\
+  !*** ./src/service_worker/offline.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nexports.default = function () {\n\n  if ('serviceWorker' in navigator) {\n\n    navigator.serviceWorker.register('../sw.js').then(function () {\n      console.log('Service worker registered.');\n    });\n  }\n};\n\n//# sourceURL=webpack:///./src/service_worker/offline.js?");
 
 /***/ }),
 
