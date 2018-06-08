@@ -79,7 +79,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nself.addEventListener('install', function (e) {\n  e.waitUntil(caches.open('decision_tree').then(function (cache) {\n    return cache.addAll(['/', '/index.html', '/app.js']);\n  }));\n});\n\nself.addEventListener('fetch', function (event) {\n  console.log(event.request.url);\n  event.respondWith(caches.match(event.request).then(function (response) {\n    return response || fetch(event.request);\n  }));\n});\n\n//# sourceURL=webpack:///./src/sw.js?");
+eval("\n\nself.addEventListener('install', function (e) {\n  e.waitUntil(caches.open('decision_tree').then(function (cache) {\n    return cache.addAll(['./', './index.html', './app.js']);\n  }));\n});\n\nself.addEventListener('fetch', function (event) {\n  console.log(event.request.url);\n  event.respondWith(caches.match(event.request).then(function (response) {\n    return response || fetch(event.request);\n  }));\n});\n\n//# sourceURL=webpack:///./src/sw.js?");
 
 /***/ })
 

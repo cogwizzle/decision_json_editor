@@ -1626,7 +1626,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nexports.default = function () {\n\n  if ('serviceWorker' in navigator) {\n\n    navigator.serviceWorker.register('../sw.js').then(function () {\n      console.log('Service worker registered.');\n    });\n  }\n};\n\n//# sourceURL=webpack:///./src/service_worker/offline.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nexports.default = function () {\n\n  if ('serviceWorker' in navigator) {\n\n    navigator.serviceWorker.register('./sw.js').then(function () {\n      console.log('Service worker registered.');\n    });\n  }\n};\n\n//# sourceURL=webpack:///./src/service_worker/offline.js?");
 
 /***/ }),
 
