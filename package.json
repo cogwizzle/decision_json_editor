@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack",
     "test": "jest",
-    "start": "asdf -p 8080 -d public"
+    "start": "asdf -p 80 -d public"
   },
   "repository": {
     "type": "git",

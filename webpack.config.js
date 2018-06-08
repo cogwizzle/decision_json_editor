@@ -1,15 +1,18 @@
 var webpack = require('webpack');
 var path = require('path');
 
-var BUILD_DIR = path.resolve(__dirname, 'public/assets');
+var BUILD_DIR = path.resolve(__dirname, 'public');
 var APP_DIR = path.resolve(__dirname, 'src');
 
 var config = {
   mode: 'development',
-  entry: APP_DIR + '/app.js',
+  entry: {
+    app: APP_DIR + '/app.js',
+    sw: APP_DIR + '/sw.js'
+  },
   output: {
     path: BUILD_DIR,
-    filename: 'bundle.js'
+    filename: '[name].js'
   },
   module : {
     rules: [
