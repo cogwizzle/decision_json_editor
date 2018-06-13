@@ -1,5 +1,6 @@
 var webpack = require('webpack');
 var path = require('path');
+var UglifyJsPlugin = require('uglifyjs-webpack-plugin'); 
 
 var BUILD_DIR = path.resolve(__dirname, 'public');
 var APP_DIR = path.resolve(__dirname, 'src');
@@ -31,7 +32,10 @@ var config = {
         loader: ['style-loader', 'css-loader']
       }
     ]
-  }
+  },
+  plugins: [
+    new UglifyJsPlugin()
+  ]
 };
 
 module.exports = config;
