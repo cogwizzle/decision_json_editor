@@ -1,0 +1,11 @@
+{
+  "name": "Decision JSON Editor",
+  "short_name": "Decision JSON Editor",
+  "icons": [
+    
+  ],
+  "start_url": "./index.html",
+  "background_color": "#4E4C4C",
+  "display": "standalone",
+  "theme": "rgb(61, 61, 61)"
+}
