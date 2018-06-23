@@ -1,0 +1,20 @@
+{
+  "name": "Decision JSON Editor",
+  "short_name": "Decision JSON Editor",
+  "icons": [
+    {
+      "src": "images/icons/pwa-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/icons/pwa-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "./index.html",
+  "background_color": "#4E4C4C",
+  "display": "standalone",
+  "theme": "rgb(61, 61, 61)"
+}
